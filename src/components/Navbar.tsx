@@ -1,5 +1,5 @@
 const myStyle: React.CSSProperties = {
-  backgroundColor: "#e3f2fd",
+  backgroundColor:"rgb(170, 214, 214)"
 };
 
 import photo from "../assets/KrishnaLogo.svg";
