@@ -1,92 +1,58 @@
-const myStyle: React.CSSProperties = {
-  backgroundColor:"rgb(170, 214, 214)"
-};
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-import photo from "../assets/KrishnaLogo.svg";
+interface NavbarProps {
+  onSearch: (searchTerm: string) => void;
+}
 
-function Navbar() {
+function Navbar({ onSearch }: NavbarProps) {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+    onSearch(event.target.value); // Pass the search term to Home.tsx
+  };
+
   return (
-    <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" style={myStyle}>
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-          <img src={photo} alt="Bootstrap" width="50" height="50"/>
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true">
-                  Disabled
-                </a>
-              </li>
-            </ul>
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container">
+        <Link className="navbar-brand" to="/">Brahma Jijnasa</Link>
+        <button 
+          className="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/faq">FAQ</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">About</Link>
+            </li>
+          </ul>
+          {/* Search Bar */}
+          <form className="d-flex">
+            <input 
+              className="form-control me-2" 
+              type="search" 
+              placeholder="Search questions..." 
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </form>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 }
 
