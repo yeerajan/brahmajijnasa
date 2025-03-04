@@ -17,7 +17,7 @@ function Home() {
       <Navbar onSearch={setSearchTerm} />
 
       <div className="container mt-5">
-        <h1 className="text-center mb-4">Frequently Asked Questions</h1>
+        <h1 className="text-center mb-4"> Please your question in search bar...</h1>
         <div className="row">
           {filteredQuestions.length > 0 ? (
             filteredQuestions.map((q) => (
