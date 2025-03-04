@@ -2,7 +2,7 @@
 export const questions = [
     { 
       id: '1', 
-      title: 'Who is the Supreme Personality of Godhead?', 
+      title: 'Who is the Supreme Personality of Godhead??', 
       answer: `Kṛṣṇa is the Supreme Personality of Godhead, as confirmed in Bhagavad Gita (18.66): 
       "sarva-dharmān parityajya, mām ekaṁ śaraṇaṁ vraja".`
     },
