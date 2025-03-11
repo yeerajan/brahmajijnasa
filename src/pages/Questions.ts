@@ -4,6 +4,7 @@ export const questions = [
     { 
       id: '1', 
       title: 'Who is the Supreme Personality of Godhead?', 
+      category: 'Spirituality',
       answer: `The definition of God given by Parāśara Muni.\n\n
   **aiśvaryasya samagrasya**  
   **vīryasya yaśasaḥ śriyāḥ**  
@@ -18,31 +19,37 @@ export const questions = [
     {
         id: '2',
         title: 'Why one should not eat onion garlic?',
+        category: 'Health',
         answer: `coming soon...`
     },
     {
         id: '3',
         title: 'Why bad thing happens to good people?',
+        category: 'Soul', 
         answer: `coming soon...`
     },
     {
         id: '4',
         title: 'Is everything destined?',
+        category: 'Spirituality',
         answer: `coming soon...`
     },
     {
         id: '5',
         title: 'Why Bhisma took side of Duryodhana?',
+        category: 'History',
         answer: `coming soon...`
     },
     {
         id: '6',
         title: 'Why Krishna married to 16,108 wives?',
+        category: 'History',
         answer: `coming soon...`
     },
     {
         id: '7',
         title: 'If everything is destined then why we have to work?',
+        category: 'Spirituality',
         answer: `coming soon...`
     }
   ];
@@ -50,5 +57,6 @@ export const questions = [
 // {
 //     id: 'number',
 //     title: 'Write your question here',
+//     category: 'Health',
 //     answer: `Write your answer here`
 // }

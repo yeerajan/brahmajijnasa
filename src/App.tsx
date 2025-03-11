@@ -8,6 +8,7 @@ function App() {
   return (
     <Router basename="/brahmajijnasa">
       <Routes>
+        
         <Route path="/" element={<Home />} />
         <Route path="/question/:id" element={<QuestionPage />} />
         <Route path="/faq" element={<Faq />} />

@@ -1,14 +1,19 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { questions } from './Questions';
-import Navbar from '../components/Navbar';
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { questions } from "./Questions";
+import Navbar from "../components/Navbar";
 
 function Home() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Filter questions based on search term
+  // Get unique categories
+  const categories = ["All", ...new Set(questions.map(q => q.category))];
+
+  // Filter questions based on search term and selected category
   const filteredQuestions = questions.filter(q =>
-    q.title.toLowerCase().includes(searchTerm.toLowerCase())
+    q.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (selectedCategory === "All" || q.category === selectedCategory)
   );
 
   return (
@@ -16,8 +21,25 @@ function Home() {
       {/* Pass search function to Navbar */}
       <Navbar onSearch={setSearchTerm} />
 
-      <div className="container mt-5">
-        <h1 className="text-center mb-4"> Please your question in search bar...</h1>
+      <div className="container mt-4">
+        <h1 className="text-center mb-3">Browse Questions</h1>
+
+        {/* Filter Section */}
+        <div className="d-flex justify-content-center mb-3">
+          <select
+            className="form-select w-50"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Questions List */}
         <div className="row">
           {filteredQuestions.length > 0 ? (
             filteredQuestions.map((q) => (
@@ -29,6 +51,7 @@ function Home() {
                         {q.title}
                       </Link>
                     </h5>
+                    <span className="badge bg-secondary">{q.category}</span>
                   </div>
                 </div>
               </div>
