@@ -18,12 +18,12 @@ function Home() {
 
   return (
     <div>
-            
+
       {/* Pass search function to Navbar */}
       <Navbar onSearch={setSearchTerm} />
 
       <div className="container mt-4">
-        <h1 className="text-center mb-3">Browse Questions</h1>
+        <h1 className="text-center mb-3">Spiritual Question Bank</h1>
 
         {/* Filter Section */}
         <div className="d-flex justify-content-center mb-3">
