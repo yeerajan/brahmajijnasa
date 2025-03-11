@@ -3,7 +3,7 @@
 export const questions = [
     { 
       id: '1', 
-      title: 'Who is the Supreme Personality of Godhead?', 
+      title: 'Who is God?', 
       category: 'Spirituality',
       answer: `The definition of God given by Parāśara Muni.\n\n
   **aiśvaryasya samagrasya**  

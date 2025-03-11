@@ -1,65 +1,45 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Form, FormControl, Button, Container } from 'react-bootstrap';
 
 interface NavbarProps {
   onSearch: (searchTerm: string) => void;
 }
 
-function Navbar({ onSearch }: NavbarProps) {
-  const [searchTerm, setSearchTerm] = useState("");
+function CustomNavbar({ onSearch }: NavbarProps) {
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-    onSearch(e.target.value); // Pass search term to Home.tsx
+    onSearch(e.target.value);
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Brahma Jijnasa
-        </Link>
-
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
-              </Link>
-            </li>
-          </ul>
-
-          {/* Search Bar */}
-          <form className="d-flex">
-            <input
-              className="form-control me-2"
+    <Navbar expand="lg" bg="dark" variant="dark" className="shadow-sm">
+      <Container>
+        <Navbar.Brand as={Link} to="/">Brahma Jijnasa</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/about">About</Nav.Link>
+            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+            <Nav.Link as={Link} to="/Faq">FAQ</Nav.Link>
+          </Nav>
+          <Form className="d-flex">
+            <FormControl
               type="search"
-              placeholder="Search questions..."
+              placeholder="Search..."
+              className="me-2"
               value={searchTerm}
-              onChange={handleSearch}
+              onChange={handleSearchChange}
             />
-            <button className="btn btn-outline-light" type="button">
-              🔍
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
+            <Button variant="outline-light">Search</Button>
+          </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default CustomNavbar;

@@ -18,6 +18,7 @@ function Home() {
 
   return (
     <div>
+            
       {/* Pass search function to Navbar */}
       <Navbar onSearch={setSearchTerm} />
 
